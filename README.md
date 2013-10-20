@@ -3,7 +3,7 @@ JS-route
 
 Quick JS router library which queries $_GET and HASH
 
-## usage
+# usage : Not ready yet
 ``` js
     Router('get').isset('key' , function(value){
         // will only run callback when $_GET->key param is found
