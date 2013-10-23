@@ -42,7 +42,12 @@ _routeGet.prototype = {
                     return false;
                 }
             } /**/
-            callback.apply(this , _multi);
+            if(typeof callback === 'function'){
+                callback.apply(this , _multi);
+            } else {
+                return _multi;
+            }
+            
             
         } else {
             return null;
