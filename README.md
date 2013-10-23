@@ -3,7 +3,7 @@ JS-route
 
 Quick JS router library which queries $_GET and HASH
 
-### usage : Not ready yet
+### usage :
 ``` js
     Router('get').isset('key' , function(value){
         // will only run callback when $_GET->key param is found
@@ -11,9 +11,14 @@ Quick JS router library which queries $_GET and HASH
     })
     
     // multi array keys set
-    Rouer('get').isset(['key1' , 'key2', 'key3'], function(val1, val2, val3){
+    Router('get').isset(['key1' , 'key2', 'key3'], function(val1, val2, val3){
         // again will only run the callback when all $_GET params are found
         // callback params val{1,2.3} = ?key1=val1&key2=val2&key3=val3
     });
+    // example could be something like
+    Router('get').isset(['gallery', 'country'], function(gallery, country){
+        var _images = $.getJSON('/path/to/'+country+'/'+gallery+'/images.json');
+        // then display the images
+    });
     
-    Router('hash')
+    Router('hash') //  Not ready yet
