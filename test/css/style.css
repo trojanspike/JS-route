@@ -16,7 +16,8 @@ body {
   box-shadow: 0px 0px 14px 0px #88746D;
 }
 /**/
-#index-nav {
+#index-nav,
+#hash-when {
   position: relative;
   width: 96%;
   height: 55px;
@@ -24,18 +25,50 @@ body {
   box-shadow: 0px 3px 8px -2px #000000;
   margin: 0 2% 0 2%;
 }
-#index-nav li {
+#index-nav li,
+#hash-when li {
   display: inline-block;
   background: #ffffff;
   padding: 2px 4px 2px 4px;
 }
-#index-nav li a {
+#index-nav li a,
+#hash-when li a {
   display: block;
   text-decoration: none;
 }
-#index-nav li:hover {
+#index-nav li:hover,
+#hash-when li:hover {
   background: #fcf9a9;
 }
 form {
   margin: 1% 2% 0 2%;
+}
+/* hash */
+#out-put {
+  width: 150px;
+  height: 150px;
+  background: #1ccc25;
+  transition: all 0.8s ease;
+}
+#out-put[data-visable="home"] {
+  width: 350px;
+  height: 350px;
+  background: #000;
+  color: #FFF;
+  margin: 15px 0 0 85px;
+}
+#out-put[data-visable="login"] {
+  width: 280px;
+  height: 420px;
+  background: red;
+  color: #FFF;
+  margin: 35px 0 0 115px;
+}
+#out-put[data-visable="inbox"] {
+  width: 150px;
+  height: 350px;
+  background: yellow;
+  color: #000;
+  border-radius: 12px;
+  margin: 85px 0 0 15px;
 }

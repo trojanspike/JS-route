@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>route tests</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script>
+		google.load("jquery", "1");
+	</script>
+	<script src="../dist/router.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<ul id="index-nav">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="form.html">Form test</a></li>
+    <li><a href="gallery.html">Small Gallery test</a></li>
+    <li><a href="hash.html">using hash methods</a></li>
+</ul>
+
+
+<br>
+<h4>Try links below which use hash.when()</h4>
+<ul id="hash-when">
+    <li><a href="#!/home">Home</a></li>
+    <li><a href="#!/login">Login</a></li>
+    <li><a href="#!/inbox">Inbox</a></li>
+</ul>
+
+<div id="out-put"> Default </div>
+
+</div><!-- /.container -->
+
+<script>
+Router('hash')
+.when('/home', function(){
+    $('#out-put').attr('data-visable', 'home');
+    $('#out-put').html('@ home');    
+})
+.when('/login' , function(){
+    $('#out-put').attr('data-visable', 'login');
+    $('#out-put').html('@ login');
+})
+.when('/inbox' , function(){
+    $('#out-put').attr('data-visable', 'inbox');
+    $('#out-put').html('@ inbox');
+});
+</script>
+</body>
+</html>

@@ -56,9 +56,51 @@
 
   })();
   _routerHash = (function() {
-    function _routerHash() {
-      return false;
-    }
+    var watch, _PathsArr, _PathsFunc, _currentPath, _hash, _run;
+
+    function _routerHash() {}
+
+    _hash = window.location.hash;
+
+    _currentPath = '';
+
+    _PathsArr = [];
+
+    _PathsFunc = {};
+
+    _run = false;
+
+    _routerHash.prototype.when = function(path, callback) {
+      if (typeof path !== 'string' || typeof callback !== 'function') {
+        throw new Error('Hash method when() params must be when(STRING, FUNCTION) - required');
+      }
+      _PathsFunc[_PathsArr.length] = callback;
+      _PathsArr.push('#!' + path);
+      if (_hash === '') {
+        window.location.hash = '#!/';
+        _hash = '#!/';
+      }
+      return this;
+    };
+
+    (watch = function() {
+      var i, _i, _len, _results;
+      setTimeout(watch, 600);
+      if (window.location.hash !== _currentPath) {
+        _hash = window.location.hash;
+      }
+      _results = [];
+      for (_i = 0, _len = _PathsArr.length; _i < _len; _i++) {
+        i = _PathsArr[_i];
+        if (i === _hash && i !== _currentPath) {
+          _currentPath = window.location.hash;
+          _results.push(_PathsFunc[_i].call());
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    })();
 
     return _routerHash;
 

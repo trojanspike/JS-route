@@ -49,8 +49,38 @@ do (window, document)->
         
     #################################
     class _routerHash
-        constructor:()->
-            return false
+        _hash = window.location.hash
+        _currentPath = ''
+        _PathsArr = []
+        _PathsFunc = {}
+        _run = false
+        
+        @::when = (path, callback)->
+            if typeof path isnt 'string' or typeof callback isnt 'function'
+                throw new Error 'Hash method when() params must be when(STRING, FUNCTION) - required'
+            
+                    
+            _PathsFunc[_PathsArr.length] = callback;
+            _PathsArr.push '#!'+path
+            
+            if _hash is ''
+                window.location.hash = '#!/'
+                _hash = '#!/'
+            @    
+        
+        do watch = ->
+            setTimeout watch, 600
+            
+            if window.location.hash isnt _currentPath
+                _hash = window.location.hash
+                
+            for i in _PathsArr
+                if i is _hash and i isnt _currentPath
+                    _currentPath = window.location.hash
+                    _PathsFunc[_i].call()
+                    
+            
+            
     
     #################################
     window.Router = (which)->
@@ -58,3 +88,7 @@ do (window, document)->
             when 'GET' then return new _routerGet()
             when 'HASH' then return new _routerHash()
             else throw new Error 'Missing param Router(get|hash)'
+            
+            
+            
+            
