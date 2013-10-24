@@ -17,8 +17,8 @@ Quick JS router library which queries $_GET and HASH
     });
     // example could be something like
     // website.com?gallery=buildings&city=new-york
-    Router('get').isset(['gallery', 'country'], function(gallery, country){
-        var _images = $.getJSON('/path/to/'+country+'/'+gallery+'/images.json');
+    Router('get').isset(['gallery', 'city'], function(gallery, city){
+        var _images = $.getJSON('/path/to/'+city+'/'+gallery+'/images.json');
         // then display the images
     });
     
