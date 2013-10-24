@@ -34,9 +34,11 @@ Quick JS router library which queries $_GET and HASH
     
     Router('hash')
     .when('/home' , function(){
+        // match website.com#!/home
         // do something on the page : open div , display message etc
     })
     .when('/home/pictures' , function(){
+        // match : website.com#!/home/pictures
         // only fires callback when hash in the URL match 
         // website.com#!/home/pictires
     })
@@ -50,3 +52,7 @@ next to do on hash-when , pass params to callback function for wildcard hash url
         // -- website.com#!/images/SOMESTRING , also
         // -- website.com#!/images/SOMESTRING/SOMENUMBER - note num will be optional
     })
+    
+    /*******************************************************************************/
+    
+    Router('segments') // not ready yet
