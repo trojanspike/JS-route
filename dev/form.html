@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>route('get') test - example : form</title>
+	<link rel="stylesheet" type="text/css" href="../test/css/style.css">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script>
+		google.load("jquery", "1");
+	</script>
+	<script src="router.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<ul id="index-nav">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="form.html">Form test</a></li>
+    <li><a href="gallery.html">Small Gallery test</a></li>
+</ul>
+
+
+
+<form action="">
+    <p>Gallery : <input type="text" name="gallery"></p>
+    <p>Person : <input type="text" name="person"></p>
+    <p>City : <input type="text" name="city"></p>
+    <p><input type="submit" value="Submit"></p>
+</form>
+
+</div><!-- /.container -->
+
+<script>
+    $('input[name="gallery"]').val(function(){
+        return (Router('get').isset('gallery'))?Router('get').isset('gallery'):'';
+    });
+    $('input[name="person"]').val(function(){
+        return (Router('get').isset('person'))?Router('get').isset('person'):'';
+    });
+    $('input[name="city"]').val(function(){
+        return (Router('get').isset('city'))?Router('get').isset('city'):'';
+    });
+        
+    Router('get').isset(['gallery', 'person', 'city'] , function(gall, pers, city){
+        console.log(gall);
+        console.log(pers); 
+        console.log(city); 
+    });
+    
+</script>
+</body>
+</html>

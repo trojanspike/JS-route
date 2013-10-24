@@ -20,9 +20,6 @@ do (window, document)->
         ###
         @::isset = (getQ, callback) ->
             
-            if typeof getQ isnt 'string' or 'object'
-                throw new Error 'Missing param .isset(string|array , func)'
-            
             _rg = new RegExp('^.*'+getQ+'=([A-Za-z0-9%@]+).*$');
             
             if typeof getQ is 'string'
@@ -31,14 +28,22 @@ do (window, document)->
                         callback @get.replace(_rg, '$1').replace /%20/g, ' '
                     else
                         return @get.replace(_rg, '$1').replace /%20/g, ' '
-            else
-                for i in getQ.length
-                    _rg = new RegExp('^.*'+getQ[i]+'=([A-Za-z0-9%@]+)(.*|&)$');
+                        
+                        
+            else if typeof getQ is 'object'
+                _multi = []
+                for i in getQ
+                    _rg = new RegExp('^.*'+i+'=([A-Za-z0-9%@]+)(.*|&)$');
+                    
                     if _rg.test @get
                         _multi.push this.get.replace(_rg, '$1').replace /%20/g, ' '
                     else
                         _multi = []
                         return false
+                if typeof callback is 'function'
+                    callback.apply this, _multi
+                else
+                    return _multi     
                 
                 
         

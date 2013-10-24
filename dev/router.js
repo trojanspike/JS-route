@@ -22,10 +22,7 @@
 
 
     _routerGet.prototype.isset = function(getQ, callback) {
-      var i, _i, _len, _multi, _ref, _rg;
-      if (typeof getQ !== 'string' || 'object') {
-        throw new Error('Missing param .isset(string|array , func)');
-      }
+      var i, _i, _len, _multi, _rg;
       _rg = new RegExp('^.*' + getQ + '=([A-Za-z0-9%@]+).*$');
       if (typeof getQ === 'string') {
         if (_rg.test(this.get)) {
@@ -35,17 +32,22 @@
             return this.get.replace(_rg, '$1').replace(/%20/g, ' ');
           }
         }
-      } else {
-        _ref = getQ.length;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          i = _ref[_i];
-          _rg = new RegExp('^.*' + getQ[i] + '=([A-Za-z0-9%@]+)(.*|&)$');
+      } else if (typeof getQ === 'object') {
+        _multi = [];
+        for (_i = 0, _len = getQ.length; _i < _len; _i++) {
+          i = getQ[_i];
+          _rg = new RegExp('^.*' + i + '=([A-Za-z0-9%@]+)(.*|&)$');
           if (_rg.test(this.get)) {
             _multi.push(this.get.replace(_rg, '$1').replace(/%20/g, ' '));
           } else {
             _multi = [];
             return false;
           }
+        }
+        if (typeof callback === 'function') {
+          return callback.apply(this, _multi);
+        } else {
+          return _multi;
         }
       }
     };
