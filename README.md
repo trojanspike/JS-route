@@ -30,5 +30,16 @@ Quick JS router library which queries $_GET and HASH
     // if all keys are not set : keyArray will be false
     
     
-    /*****************************************************************************************************************/
-    Router('hash') //  Not ready yet
+    /*******************************************************************************/
+    
+    Router('hash')
+    .when('/home' , function(){
+        // do something on the page : open div , display message etc
+    })
+    .when('/home/pictures' , function(){
+        // only fires callback when hash in the URL match 
+        // website.com#!/home/pictires
+    })
+    .when('/login' , function(){
+        // website.com#!/login
+    });
