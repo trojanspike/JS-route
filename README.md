@@ -45,7 +45,7 @@ Quick JS router library which queries $_GET and HASH
     });
     
 next to do on hash-when , pass params to callback function for wildcard hash url , e.g
-    .when('#!/images(/:string)(/:num?)', function(string, num){
+    .when('/images(/:string)(/:num?)', function(string, num){
         // callback will only run when hash matches 
         // -- website.com#!/images/SOMESTRING , also
         // -- website.com#!/images/SOMESTRING/SOMENUMBER - note num will be optional
