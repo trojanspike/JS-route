@@ -3,7 +3,7 @@ JS-route
 
 Quick JS router library which queries $_GET and HASH
 
-### usage :
+### GET usage :
 ``` js
     Router('get').isset('key' , function(value){
         // will only run callback when $_GET->key param is found
@@ -29,9 +29,30 @@ Quick JS router library which queries $_GET and HASH
     //- keyArray will be the JS array if all keys are set , if the keys have no value the array value will be ''
     // if all keys are not set : keyArray will be false
     
+    //- set a key to a value while keeping the other stage , hash 
+    Router('get').set('key' , 'value'); 
+        // if key is set and has the value no change will happen
+        // if key is set but value is different change will happen - browser reload
+        // if key is not set browser will reload - setting the key and value
+        
+    //- remove key and value
+    Router('get').rm('key' , 'value'); // again other states will be kept
+        // if key is set broser will reload removing it while keep the other GET keys & values
+        
+    //- all chainable
+    Router('get').isset(PARAMS).rm('key').set('key' , 'value');
     
-    /*******************************************************************************/
+    //- example could be
+    Router('get').isset('gallery' , function(gallery){
+        if(gallery === ''){
+            Router('get').set('gallery' , 'unicorns');
+        }
+    });
     
+    
+
+### HASH usage :
+``` js    
     Router('hash')
     .when('/home' , function(){
         // match website.com#!/home
@@ -44,6 +65,20 @@ Quick JS router library which queries $_GET and HASH
     })
     .when('/login' , function(){
         // website.com#!/login
+    })
+    .base(function(){
+        // what to do for the base hash : #!/
+    });
+    
+    //- change the hash
+    Router('hash').goto('/terms/privacy/cookies');
+    
+    //- example could be
+    Router('hash').when('/terms' , function(){
+        // display terms page
+        $(element).on('click' , function(){
+            Router('hash').goto('/terms/privacy/cookies');
+        });
     });
     
 next to do on hash-when , pass params to callback function for wildcard hash url , e.g
@@ -52,7 +87,9 @@ next to do on hash-when , pass params to callback function for wildcard hash url
         // -- website.com#!/images/SOMESTRING , also
         // -- website.com#!/images/SOMESTRING/SOMENUMBER - note num will be optional
     })
+ 
     
-    /*******************************************************************************/
+### SEGMENTS usage :
+``` js 
     
     Router('segments') // not ready yet
