@@ -4,7 +4,7 @@ JS-route
 Quick JS router library which queries $_GET and HASH
 
 ### GET usage :
-``` js
+```js
     Router('get').isset('key' , function(value){
         // will only run callback when $_GET->key param is found
         // callback param value = ?key=value
@@ -48,11 +48,11 @@ Quick JS router library which queries $_GET and HASH
             Router('get').set('gallery' , 'unicorns');
         }
     });
-    
+```    
     
 
 ### HASH usage :
-``` js    
+```js    
     Router('hash')
     .when('/home' , function(){
         // match website.com#!/home
@@ -88,8 +88,8 @@ next to do on hash-when , pass params to callback function for wildcard hash url
         // -- website.com#!/images/SOMESTRING/SOMENUMBER - note num will be optional
     })
  
-    
+```    
 ### SEGMENTS usage :
-``` js 
+```js 
     
     Router('segments') // not ready yet
