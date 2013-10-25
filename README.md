@@ -36,7 +36,7 @@ Quick JS router library which queries $_GET and HASH
         // if key is not set browser will reload - setting the key and value
         
     //- remove key and value
-    Router('get').rm('key' , 'value'); // again other states will be kept
+    Router('get').rm('key'); // again other states will be kept
         // if key is set broser will reload removing it while keep the other GET keys & values
         
     //- all chainable
