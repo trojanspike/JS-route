@@ -53,8 +53,10 @@ Properities
     
     //- example could be
     Router('get').isset('gallery' , function(gallery){
+        // url : website.com?gallrey&city=newyork
         if(gallery === ''){
             Router('get').set('gallery' , 'unicorns');
+            // will become : website.com?gallrey=unicorns&city=newyork
         }
     });
 ```    
