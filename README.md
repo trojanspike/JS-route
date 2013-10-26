@@ -1,5 +1,5 @@
-# JS-route : access GET and hash - with live change watch on hash
-# Simple , Easy and clean to use
+## JS-route : access GET and hash - with live change watch on hash
+### Simple , Easy and clean to use
 ----------
 
 Quick JS router library which queries $_GET and HASH
