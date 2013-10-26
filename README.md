@@ -112,13 +112,12 @@ Methods
 
 Properities
 
-```javascript 
-    
+```javascript
     Router('segments') // not ready yet
-'''
+```
 
 
-##### All code and examples are released under an MIT License
+### All code and examples are released under an MIT License
 
 The MIT License
 
