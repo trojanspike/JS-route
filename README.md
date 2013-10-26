@@ -115,8 +115,6 @@ Properities
 ```javascript 
     
     Router('segments') // not ready yet
-    
-    
 '''
 
 
