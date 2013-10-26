@@ -1,10 +1,19 @@
-JS-route
+# JS-route
 ========
 
 Quick JS router library which queries $_GET and HASH
 
 ### GET usage :
-```js
+Methods
+
+ * .isset    : 2 params , ( 1 - string or array, required ) ( 2 - function , optionsl )
+ * .set      : 2 parms  , ( 1 - string : key name , required ) ( 2 - string : key value , required )
+ * .rm       : 1 params , ( 1 - string : key name , required)
+
+Properities
+* .val      : returns string - get string or false if no string
+
+```javascript
     Router('get').isset('key' , function(value){
         // will only run callback when $_GET->key param is found
         // callback param value = ?key=value
@@ -52,7 +61,15 @@ Quick JS router library which queries $_GET and HASH
     
 
 ### HASH usage :
-```js    
+Methods
+
+ * .when    : 2 params , ( 1 - string , required ) ( 2 - function , required ) required method
+ * .base      : 1 parms  ,  ( 1 - string : key value , required ) option method
+ * .goto       : 1 params , ( 1 - string : hash to go to , required) option method
+
+Properities
+
+```javascript    
     Router('hash')
     .when('/home' , function(){
         // match website.com#!/home
@@ -90,6 +107,38 @@ next to do on hash-when , pass params to callback function for wildcard hash url
  
 ```    
 ### SEGMENTS usage :
-```js 
+Methods
+
+
+Properities
+
+```javascript 
     
     Router('segments') // not ready yet
+    
+    
+'''
+
+All code and examples are released under an MIT License
+
+The MIT License
+
+Copyright (c) 2013 Lee Mc Kay
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
