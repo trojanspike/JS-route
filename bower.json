@@ -1,9 +1,9 @@
 {
   "name": "js-route",
   "version": "0.8.5",
-  "homepage": "\"template\",",
+  "homepage": "sites-ignite.co.uk",
   "authors": [
-    "Lee <trojan_spikepk@yahoo.co.uk>"
+    "Lee lee@sites-ignite.co.uk"
   ],
   "description": "JS-router is a library that queries GET variables in the URL , also watches hash for change. simple to use",
   "main": "dist/router.min.js",
