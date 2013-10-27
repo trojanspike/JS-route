@@ -118,6 +118,8 @@ do (window, document)->
         constructor:->
             return false
             
+            @:: =
+                run : ->
             
     
     #################################

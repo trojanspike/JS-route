@@ -1,0 +1,29 @@
+{
+  "name": "js-route",
+  "version": "0.8.5",
+  "homepage": "\"template\",",
+  "authors": [
+    "Lee <trojan_spikepk@yahoo.co.uk>"
+  ],
+  "description": "JS-router is a library that queries GET variables in the URL , also watches hash for change. simple to use",
+  "main": "dist/router.min.js",
+  "keywords": [
+    "route",
+    "router",
+    "js",
+    "template",
+    "get",
+    "url",
+    "hash"
+  ],
+  "license": "MIT",
+  "homepage": "sites-ignite.co.uk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
