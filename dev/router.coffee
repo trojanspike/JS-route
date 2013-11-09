@@ -116,21 +116,25 @@ do (window, document)->
     #################################
     class _routerSegm
         constructor:->
-            return false
-            
-            @:: =
-                run : ->
+            _url = window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1')
+            @segments = _url.split('/')
+        @:: =
+            count : do ->
+                return window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1').split('/').length
+            get : (num)->
+                if typeof num is 'undefined'
+                    return @segments
+                if typeof num isnt 'number'
+                    return undefined
+                else
+                    return @segments[num]
             
     
     #################################
     window.Router = (which)->
         switch which.toUpperCase()
             when 'GET' then return new _routerGet()
-            when 'HASH'
-                if typeof _hashInst is 'undefined'
-                    return _hashInst = new _routerHash()
-                else
-                    return _hashInst
+            when 'HASH' then return new _routerHash()
             when 'SEGMENTS' , 'SEG' then return new _routerSegm()
             else throw new Error 'Missing param Router(get|hash)'
             

@@ -148,27 +148,36 @@
   })();
   _routerSegm = (function() {
     function _routerSegm() {
-      return false;
-      this.prototype = {
-        run: function() {}
-      };
+      var _url;
+      _url = window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1');
+      this.segments = _url.split('/');
     }
+
+    _routerSegm.prototype = {
+      count: (function() {
+        return window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1').split('/').length;
+      })(),
+      get: function(num) {
+        if (typeof num === 'undefined') {
+          return this.segments;
+        }
+        if (typeof num !== 'number') {
+          return void 0;
+        } else {
+          return this.segments[num];
+        }
+      }
+    };
 
     return _routerSegm;
 
   })();
   return window.Router = function(which) {
-    var _hashInst;
     switch (which.toUpperCase()) {
       case 'GET':
         return new _routerGet();
       case 'HASH':
-        if (typeof _hashInst === 'undefined') {
-          return _hashInst = new _routerHash();
-        } else {
-          return _hashInst;
-        }
-        break;
+        return new _routerHash();
       case 'SEGMENTS':
       case 'SEG':
         return new _routerSegm();
