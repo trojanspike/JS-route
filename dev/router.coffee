@@ -114,21 +114,8 @@ do (window, document)->
                     _RunPathFunc[_hash].call()     
 
     #################################
-    class _routerSegm
-        constructor:->
-            _url = window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1')
-            @segments = _url.split('/')
-        @:: =
-            count : do ->
-                return window.location.href.replace(/http:\/\/|https:\/\//, '').replace(/^(.*)(\?.*)(#.*)$/, '$1').split('/').length
-            get : (num)->
-                if typeof num is 'undefined'
-                    return @segments
-                if typeof num isnt 'number'
-                    return undefined
-                else
-                    return @segments[num]
-            
+
+    # class _routerSegm
     
     #################################
     window.Router = (which)->
@@ -137,7 +124,3 @@ do (window, document)->
             when 'HASH' then return new _routerHash()
             when 'SEGMENTS' , 'SEG' then return new _routerSegm()
             else throw new Error 'Missing param Router(get|hash)'
-            
-            
-            
-            

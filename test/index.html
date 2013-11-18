@@ -7,7 +7,7 @@
 	<script>
 		google.load("jquery", "1");
 	</script>
-	<script src="../dist/router.js"></script>
+	<script src="../dev/router.js"></script>
 </head>
 <body>
 
@@ -22,6 +22,12 @@
 
 </div><!-- /.container -->
 
-<script></script>
+<script>
+    (function(){
+        Router('get').isset('hacker' , function(value){
+            $('body').html(value);
+        });    
+    })();
+</script>
 </body>
 </html>
